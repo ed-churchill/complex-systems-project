@@ -18,21 +18,28 @@ for i in range(1, 200):
 # Create graph edges, using the edges stored in text files
 #######---------------------------------------------------
 
-#  Read tube edges from text file
+#  Read edges from text file
 with open('tube_edges.txt') as f:
-    # Read edges from text file and convert to list
     tube_edges = f.readline()
+with open('bus_edges.txt') as f:
+    bus_edges = f.readline()
     
-# Add tube edges to graph
+# Convert edges from text files to lists
 tube_edges = ast.literal_eval(tube_edges)
+bus_edges = ast.literal_eval(bus_edges)
+
+# Add edges to graph
 for edge in tube_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
     london_graph.add_edge(edge)
+for edge in bus_edges:
+    edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
+    london_graph.add_edge(edge)
 
-# Write tube graph to .gv file
-with open('tube_edges.gv', 'w') as f:
+# Write graph to .gv file
+with open('london_graph.gv', 'w') as f:
     f.write(london_graph.to_string())
 
-# Write tube graph to .png file
-os.system('dot -Tpng tube_edges.gv -o london_graph.png')
+# Write London graph to .png file
+os.system('dot -Tpng london_graph.gv -o london_graph.png')
 
