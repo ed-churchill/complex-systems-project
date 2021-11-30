@@ -34,12 +34,15 @@ taxi_edges = ast.literal_eval(taxi_edges)
 # Add edges to graph
 for edge in tube_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
+    edge.set('color', 'red')
     london_graph.add_edge(edge)
 for edge in bus_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
+    edge.set('color', 'blue')
     london_graph.add_edge(edge)
 for edge in taxi_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
+    edge.set('color', 'green')
     london_graph.add_edge(edge)
 
 # Write graph to .gv file
