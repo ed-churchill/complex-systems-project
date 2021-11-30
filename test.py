@@ -17,5 +17,6 @@ test_graph.add_node(test_node_one)
 test_graph.add_node(test_node_two)
 test_graph.add_edge(test_edge)
 
-# Print graph
-print(test_graph.to_string())
+# Write graph to .gv file
+with open('test_graph.gv', 'w') as f:
+    f.write(test_graph.to_string())
