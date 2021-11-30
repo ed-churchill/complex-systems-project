@@ -7,7 +7,7 @@ from pydotplus.graphviz import Node
  # Create London graph
 london_graph = pdp.graphviz.Graph(graph_name='london_graph',
                                         graph_type='graph',
-                                        simplify=True)
+                                        simplify=False)
 
 # Create graph nodes
 for i in range(1, 200):
