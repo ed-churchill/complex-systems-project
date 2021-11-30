@@ -23,16 +23,22 @@ with open('tube_edges.txt') as f:
     tube_edges = f.readline()
 with open('bus_edges.txt') as f:
     bus_edges = f.readline()
+with open('taxi_edges.txt') as f:
+    taxi_edges = f.readline()
     
 # Convert edges from text files to lists
 tube_edges = ast.literal_eval(tube_edges)
 bus_edges = ast.literal_eval(bus_edges)
+taxi_edges = ast.literal_eval(taxi_edges)
 
 # Add edges to graph
 for edge in tube_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
     london_graph.add_edge(edge)
 for edge in bus_edges:
+    edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
+    london_graph.add_edge(edge)
+for edge in taxi_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
     london_graph.add_edge(edge)
 
