@@ -1,6 +1,7 @@
 import pydotplus as pdp
 import os
 import ast
+from players import Detective, MisterX
 
 
 def generate_initial_graph():
