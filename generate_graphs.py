@@ -16,7 +16,7 @@ def add_nodes(graph, mister_x_location, detective_locations):
         graph.add_node(node_i)
 
 def add_edges(graph):
-    """Adds edges to the graph of London"""
+    """Adds the edges to the graph"""
 
     # Read edges from text file
     with open('Edges/tube_edges.txt') as f:
