@@ -14,11 +14,6 @@ for i in range(1, 200):
     node_i.set('fontsize', 40)
     london_graph.add_node(node_i)
     
-
-#######---------------------------------------------------
-# Create graph edges, using the edges stored in text files
-#######---------------------------------------------------
-
 #  Read edges from text file
 with open('Edges/tube_edges.txt') as f:
     tube_edges = f.readline()
@@ -53,6 +48,6 @@ for edge in taxi_edges:
 with open('london_graph.gv', 'w') as f:
     f.write(london_graph.to_string())
 
-# Write London graph to .png file
+# Write graph to .png file, using the already created .gv file
 os.system('dot -Tpng london_graph.gv -o london_graph.png')
 
