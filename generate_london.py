@@ -2,8 +2,6 @@ import pydotplus as pdp
 import os
 import ast
 
-from pydotplus.graphviz import Node
-
  # Create London graph
 london_graph = pdp.graphviz.Graph(graph_name='london_graph',
                                         graph_type='graph',
@@ -12,7 +10,10 @@ london_graph = pdp.graphviz.Graph(graph_name='london_graph',
 # Create graph nodes
 for i in range(1, 200):
     node_i = pdp.graphviz.Node(name=str(i))
+    node_i.set('penwidth', 3)
+    node_i.set('fontsize', 40)
     london_graph.add_node(node_i)
+    
 
 #######---------------------------------------------------
 # Create graph edges, using the edges stored in text files
@@ -35,14 +36,17 @@ taxi_edges = ast.literal_eval(taxi_edges)
 for edge in tube_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
     edge.set('color', 'red')
+    edge.set('penwidth', 4)
     london_graph.add_edge(edge)
 for edge in bus_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
     edge.set('color', 'blue')
+    edge.set('penwidth', 4)
     london_graph.add_edge(edge)
 for edge in taxi_edges:
     edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
     edge.set('color', 'green')
+    edge.set('penwidth', 4)
     london_graph.add_edge(edge)
 
 # Write graph to .gv file
