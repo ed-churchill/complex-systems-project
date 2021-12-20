@@ -20,11 +20,11 @@ for i in range(1, 200):
 #######---------------------------------------------------
 
 #  Read edges from text file
-with open('tube_edges.txt') as f:
+with open('Edges/tube_edges.txt') as f:
     tube_edges = f.readline()
-with open('bus_edges.txt') as f:
+with open('Edges/bus_edges.txt') as f:
     bus_edges = f.readline()
-with open('taxi_edges.txt') as f:
+with open('Edges/taxi_edges.txt') as f:
     taxi_edges = f.readline()
     
 # Convert edges from text files to lists
