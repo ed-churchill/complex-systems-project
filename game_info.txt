@@ -1,0 +1,8 @@
+Start of game: Every player picks a random card telling them where to start.
+Mister X moves first
+Other 3 detectives turn
+
+for loop:
+    mister x turn
+    detectives turn
+    check if mister x is on detective or if mister x can't move
