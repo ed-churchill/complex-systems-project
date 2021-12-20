@@ -317,11 +317,11 @@ graph london_graph {
 184 -- 185  [color=blue, penwidth=4];
 185 -- 187  [color=blue, penwidth=4];
 190 -- 191  [color=blue, penwidth=4];
-1 -- 8  [color=green, penwidth=4];
-1 -- 9  [color=green, penwidth=4];
-2 -- 10  [color=green, penwidth=4];
-2 -- 20  [color=green, penwidth=4];
-3 -- 4  [color=green, penwidth=4];
+1 -- 8  [color=yellow, penwidth=4];
+1 -- 9  [color=yellow, penwidth=4];
+2 -- 10  [color=yellow, penwidth=4];
+2 -- 20  [color=yellow, penwidth=4];
+3 -- 4  [color=yellow, penwidth=4];
 3 -- 11  [color=green, penwidth=4];
 3 -- 12  [color=green, penwidth=4];
 4 -- 13  [color=green, penwidth=4];
