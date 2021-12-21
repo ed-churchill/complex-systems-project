@@ -86,6 +86,3 @@ def draw_graph(graph, graph_name):
 if __name__ == "__main__":
     london_graph = generate_initial_graph()
     draw_graph(london_graph, 'london_graph')
-
-    tube_edges, bus_edges, taxi_edges = get_edges()
-    print(possible_moves(5, tube_edges, bus_edges, taxi_edges))
