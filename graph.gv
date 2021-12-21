@@ -1,8 +1,8 @@
 graph london_graph {
-1 [fontsize=40, penwidth=3];
-2 [fontsize=40, penwidth=3];
-3 [fontsize=40, penwidth=3];
-4 [fontsize=40, penwidth=3];
+1 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
+2 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+3 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+4 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 5 [fontsize=40, penwidth=3];
 6 [fontsize=40, penwidth=3];
 7 [fontsize=40, penwidth=3];

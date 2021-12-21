@@ -3,16 +3,6 @@ import os
 import ast
 from players import Detective, MisterX
 
-def add_nodes(graph):
-    """Adds the 199 nodes to the given graph"""
-
-    # Add graph nodes
-    for i in range(1, 200):
-        node_i = pdp.graphviz.Node(name=str(i))
-        node_i.set('penwidth', 3)
-        node_i.set('fontsize', 40)
-        graph.add_node(node_i)
-
 def get_edges():
     """Function that reads edges from text files, and returns 3 lists (as a tuple)
     in the format (tube_edges, bus_edges, taxi_edges)"""
@@ -33,7 +23,7 @@ def get_edges():
     return (tube_edges, bus_edges, taxi_edges)
 
 def add_edges(graph):
-    """Adds the edges to the graph"""
+    """Function that adds the edges to the graph"""
 
     # Read edges from text file
     edges = get_edges()
@@ -56,20 +46,46 @@ def add_edges(graph):
         edge.set('penwidth', 4)
         graph.add_edge(edge)
 
+def add_nodes(graph, misterx_location, detective_locations):
+    """Adds the 199 nodes to the given graph, highlighting the locations of MisterX and the Detectives"""
 
-def generate_initial_graph():
-    """Function that returns a pdp.graphviz.Graph object of the initial graph of London"""
+    # Add Mister X node
+    node_misterx = pdp.graphviz.Node(name=str(misterx_location), style='filled')
+    node_misterx.set('pendwidth', 3)
+    node_misterx.set('fontsize', 40)
+    node_misterx.set('fillcolor', 'red')
+    graph.add_node(node_misterx)
+
+    # Add Detective nodes
+    for val in detective_locations:
+        node_detective = pdp.graphviz.Node(name=str(val), style='filled')
+        node_detective.set('pendwidth', 3)
+        node_detective.set('fontsize', 40)
+        node_detective.set('fillcolor', 'green')
+        graph.add_node(node_detective)
+
+    # Add remaining graph nodes
+    other_nodes = [i for i in range(1, 200) if i != misterx_location and i not in detective_locations]
+    for i in other_nodes:
+        node_i = pdp.graphviz.Node(name=str(i))
+        node_i.set('penwidth', 3)
+        node_i.set('fontsize', 40)
+        graph.add_node(node_i)
+
+def generate_graph(misterx_location, detective_locations):
+    """Function that returns a pdp.graphviz.Graph object of the graph of London, together with
+    Mister X's location and the Detectives' location highlighted."""
 
     # Initialise graph
-    london_graph = pdp.graphviz.Graph(graph_name='london_graph',
+    graph = pdp.graphviz.Graph(graph_name='london_graph',
                                             graph_type='graph',
                                             simplify=False)
 
     # Add nodes and edges
-    add_nodes(london_graph)
-    add_edges(london_graph)
+    add_nodes(graph, misterx_location, detective_locations)
+    add_edges(graph)
 
-    return london_graph
+    return graph
 
 def draw_graph(graph, graph_name):
     """Function that writes the given pydotplus.graphviz.Graph object to a .gv file and .png
@@ -84,5 +100,5 @@ def draw_graph(graph, graph_name):
 
 # Main method
 if __name__ == "__main__":
-    london_graph = generate_initial_graph()
-    draw_graph(london_graph, 'london_graph')
+    graph = generate_graph(1, [2, 3, 4])
+    draw_graph(graph, 'graph')
