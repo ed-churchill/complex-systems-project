@@ -13,6 +13,47 @@ class MisterX:
         # Initialise location using initial location
         self.location = initial_location
 
+    def possible_moves(self, tube_edges, bus_edges, taxi_edges):
+        """Function that returns a dictionary. The keys are the three modes of transport, and
+        the values are lists of possible nodes that can be travelled to from the current location
+        on each mode of transport"""
+
+        # List to store nodes that can be travelled to via tube
+        tube_journeys = []
+        for edge in tube_edges:
+            if self.location in edge:
+                # Get index of current location in the list (of length 2)
+                index = edge.index(self.location)
+                
+                # Append the other node in the edge to list of possible nodes
+                possible_node = edge[index - 1]
+                tube_journeys.append(possible_node)
+
+        # List to store nodes that can be travelled to via bus
+        bus_journeys = []
+        for edge in bus_edges:
+            if self.location in edge:
+                # Get index of current location in the list (of length 2)
+                index = edge.index(self.location)
+                
+                # Append the other node in the edge to list of possible nodes
+                possible_node = edge[index - 1]
+                bus_journeys.append(possible_node)
+
+        # List to store nodes that can be travelled to via taxi
+        taxi_journeys = []
+        for edge in taxi_edges:
+            if self.location in edge:
+                # Get index of current location in the list (of length 2)
+                index = edge.index(self.location)
+                
+                # Append the other node in the edge to list of possible nodes
+                possible_node = edge[index - 1]
+                taxi_journeys.append(possible_node)
+
+        # Return dictionary
+        return {'tube': tube_journeys, 'bus': bus_journeys, 'taxi': taxi_journeys}
+
 
 class Detective:
     """A class to model a detective"""
@@ -27,4 +68,43 @@ class Detective:
         # Initialise location using initial location
         self.location = initial_location
     
+    def possible_moves(self, tube_edges, bus_edges, taxi_edges):
+        """Function that returns a dictionary. The keys are the three modes of transport, and
+        the values are lists of possible nodes that can be travelled to from the current location
+        on each mode of transport"""
 
+        # List to store nodes that can be travelled to via tube
+        tube_journeys = []
+        for edge in tube_edges:
+            if self.location in edge:
+                # Get index of current location in the list (of length 2)
+                index = edge.index(self.location)
+                
+                # Append the other node in the edge to list of possible nodes
+                possible_node = edge[index - 1]
+                tube_journeys.append(possible_node)
+
+        # List to store nodes that can be travelled to via bus
+        bus_journeys = []
+        for edge in bus_edges:
+            if self.location in edge:
+                # Get index of current location in the list (of length 2)
+                index = edge.index(self.location)
+                
+                # Append the other node in the edge to list of possible nodes
+                possible_node = edge[index - 1]
+                bus_journeys.append(possible_node)
+
+        # List to store nodes that can be travelled to via taxi
+        taxi_journeys = []
+        for edge in taxi_edges:
+            if self.location in edge:
+                # Get index of current location in the list (of length 2)
+                index = edge.index(self.location)
+                
+                # Append the other node in the edge to list of possible nodes
+                possible_node = edge[index - 1]
+                taxi_journeys.append(possible_node)
+
+        # Return dictionary
+        return {'tube': tube_journeys, 'bus': bus_journeys, 'taxi': taxi_journeys}
