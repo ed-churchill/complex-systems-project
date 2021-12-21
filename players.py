@@ -13,6 +13,7 @@ class MisterX:
         # Initialise location using initial location
         self.location = initial_location
 
+
 class Detective:
     """A class to model a detective"""
 
