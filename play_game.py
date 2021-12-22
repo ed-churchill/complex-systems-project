@@ -11,14 +11,21 @@ def initialise_game():
     detectives = [Detective(), Detective(), Detective(), Detective()]
 
     # Ensure Detectives have unique starting locations
-    initial_locations = [13, 26, 29, 34, 50, 53, 91, 94, 103, 112, 117, 138, 141, 155, 174]
-    detective_locations = [detective.location for detective in detectives]
-    if len(detective_locations) > len(set(detective_locations)):
+    possible_locations = [13, 26, 29, 34, 50, 53, 91, 94, 103, 112, 117, 138, 141, 155, 174]
+    initial_locations = [detective.location for detective in detectives]
+    if len(initial_locations) > len(set(initial_locations)):
         for i in range(0, 4):
-            detectives[i].location = random.choice(initial_locations)
-            initial_locations.remove(detectives[i].location)
+            detectives[i].location = random.choice(possible_locations)
+            possible_locations.remove(detectives[i].location)
+    initial_locations = [detective.location for detective in detectives]
 
-    
+    # Generate graph, including initial locations of players
+    intiial_graph = generate_graph(mister_x.location, initial_locations)
+
+    # Draw the graph and write it to a file "initial_graph.png"
+    draw_graph(intiial_graph, 'initial_graph')
+
+
 
 
 if __name__ == "__main__":
