@@ -14,9 +14,8 @@ class MisterX:
         self.location = initial_location
 
     def possible_moves(self, tube_edges, bus_edges, taxi_edges):
-        """Function that returns a dictionary. The keys are the three modes of transport, and
-        the values are lists of possible nodes that can be travelled to from the current location
-        on each mode of transport"""
+        """Function that returns a list of possible nodes that can be travelled to 
+        from the current location"""
 
         # List to store nodes that can be travelled to via tube
         tube_journeys = []
@@ -51,8 +50,8 @@ class MisterX:
                 possible_node = edge[index - 1]
                 taxi_journeys.append(possible_node)
 
-        # Return dictionary
-        return {'tube': tube_journeys, 'bus': bus_journeys, 'taxi': taxi_journeys}
+        # Return list
+        return tube_journeys + bus_journeys + taxi_journeys
 
 
 class Detective:
@@ -69,9 +68,8 @@ class Detective:
         self.location = initial_location
     
     def possible_moves(self, tube_edges, bus_edges, taxi_edges):
-        """Function that returns a dictionary. The keys are the three modes of transport, and
-        the values are lists of possible nodes that can be travelled to from the current location
-        on each mode of transport"""
+        """Function that returns a list of possible nodes that can be travelled 
+        to from the current location"""
 
         # List to store nodes that can be travelled to via tube
         tube_journeys = []
