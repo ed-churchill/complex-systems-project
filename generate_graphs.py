@@ -41,7 +41,7 @@ def add_edges(graph):
         graph.add_edge(edge)
     for edge in taxi_edges:
         edge = pdp.graphviz.Edge(src=str(edge[0]), dst=str(edge[1]))
-        edge.set('color', 'green')
+        edge.set('color', 'yellow')
         edge.set('penwidth', 4)
         graph.add_edge(edge)
 

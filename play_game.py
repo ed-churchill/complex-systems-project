@@ -37,7 +37,7 @@ def play_random_game(mister_x, detectives):
 
     tube_edges, bus_edges, taxi_edges = get_edges()
 
-    # Calculate Mister X's possible nodes
+    # Calculate Mister X's possible nodes TODO: IF LIST IS EMPTY THEN GAME OVER
     misterx_moves = mister_x.possible_moves(tube_edges, bus_edges, taxi_edges)
     for detective in detectives:
         if detective.location in misterx_moves:
