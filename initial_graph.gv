@@ -1,9 +1,9 @@
 graph london_graph {
-71 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
-53 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+146 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
+138 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 141 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-94 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-174 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+53 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+112 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 1 [fontsize=40, penwidth=3];
 2 [fontsize=40, penwidth=3];
 3 [fontsize=40, penwidth=3];
@@ -73,6 +73,7 @@ graph london_graph {
 68 [fontsize=40, penwidth=3];
 69 [fontsize=40, penwidth=3];
 70 [fontsize=40, penwidth=3];
+71 [fontsize=40, penwidth=3];
 72 [fontsize=40, penwidth=3];
 73 [fontsize=40, penwidth=3];
 74 [fontsize=40, penwidth=3];
@@ -95,6 +96,7 @@ graph london_graph {
 91 [fontsize=40, penwidth=3];
 92 [fontsize=40, penwidth=3];
 93 [fontsize=40, penwidth=3];
+94 [fontsize=40, penwidth=3];
 95 [fontsize=40, penwidth=3];
 96 [fontsize=40, penwidth=3];
 97 [fontsize=40, penwidth=3];
@@ -112,7 +114,6 @@ graph london_graph {
 109 [fontsize=40, penwidth=3];
 110 [fontsize=40, penwidth=3];
 111 [fontsize=40, penwidth=3];
-112 [fontsize=40, penwidth=3];
 113 [fontsize=40, penwidth=3];
 114 [fontsize=40, penwidth=3];
 115 [fontsize=40, penwidth=3];
@@ -138,14 +139,12 @@ graph london_graph {
 135 [fontsize=40, penwidth=3];
 136 [fontsize=40, penwidth=3];
 137 [fontsize=40, penwidth=3];
-138 [fontsize=40, penwidth=3];
 139 [fontsize=40, penwidth=3];
 140 [fontsize=40, penwidth=3];
 142 [fontsize=40, penwidth=3];
 143 [fontsize=40, penwidth=3];
 144 [fontsize=40, penwidth=3];
 145 [fontsize=40, penwidth=3];
-146 [fontsize=40, penwidth=3];
 147 [fontsize=40, penwidth=3];
 148 [fontsize=40, penwidth=3];
 149 [fontsize=40, penwidth=3];
@@ -173,6 +172,7 @@ graph london_graph {
 171 [fontsize=40, penwidth=3];
 172 [fontsize=40, penwidth=3];
 173 [fontsize=40, penwidth=3];
+174 [fontsize=40, penwidth=3];
 175 [fontsize=40, penwidth=3];
 176 [fontsize=40, penwidth=3];
 177 [fontsize=40, penwidth=3];

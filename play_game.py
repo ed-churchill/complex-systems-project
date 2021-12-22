@@ -4,7 +4,8 @@ import random
 
 def initialise_game():
     """Function that sets up the initial graph with MisterX and the Detectives in
-    randomly chosen unique locations"""
+    randomly chosen unique locations. It returns the class objects as a tuple of the form
+    (MisterX(), detectives)"""
 
     # Create Mister X and Detectives
     mister_x = MisterX()
@@ -25,7 +26,8 @@ def initialise_game():
     # Draw the graph and write it to a file "initial_graph.png"
     draw_graph(intiial_graph, 'initial_graph')
 
-
+    # Return class objects for use in the game
+    return (mister_x, detectives)
 
 
 if __name__ == "__main__":
