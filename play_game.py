@@ -33,18 +33,24 @@ def initialise_game():
 def play_random_game(mister_x, detectives):
     """Function that carries out one game of Scotland Yard using the random walk
     strategy specified in the write up. It takes class objects as paramaters (which
-    have been obtained from the 'initialise_game()' function"""
+    have been obtained from the 'initialise_game()' function. The function returns 1
+    if the detectives win and returns 0 if MisterX wins"""
 
     tube_edges, bus_edges, taxi_edges = get_edges()
 
-    # Calculate Mister X's possible nodes TODO: IF LIST IS EMPTY THEN GAME OVER
+    # Calculate Mister X's possible moves
     misterx_moves = mister_x.possible_moves(tube_edges, bus_edges, taxi_edges)
     for detective in detectives:
         if detective.location in misterx_moves:
             misterx_moves.remove(detective.location)
-        
-    # Move to a random node out of the possible nodes
-    mister_x.location = random.choice(misterx_moves)
+    
+    # If list of possible moves is empty, then detectives win
+    if not misterx_moves:
+        print("Game over. Detectives win")
+        return 1
+    else:
+        # Move to a random node out of the possible nodes
+        mister_x.location = random.choice(misterx_moves)
 
 if __name__ == "__main__":
     mister_x, detectives = initialise_game()
