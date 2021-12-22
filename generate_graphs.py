@@ -1,7 +1,6 @@
 import pydotplus as pdp
 import os
 import ast
-from players import Detective, MisterX
 
 def get_edges():
     """Function that reads edges from text files, and returns 3 lists (as a tuple)
