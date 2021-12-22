@@ -105,4 +105,4 @@ class Detective:
                 taxi_journeys.append(possible_node)
 
         # Return dictionary
-        return {'tube': tube_journeys, 'bus': bus_journeys, 'taxi': taxi_journeys}
+        return tube_journeys + bus_journeys + taxi_journeys

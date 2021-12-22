@@ -21,10 +21,10 @@ def initialise_game():
     initial_locations = [detective.location for detective in detectives]
 
     # Generate graph, including initial locations of players
-    intiial_graph = generate_graph(mister_x.location, initial_locations)
+    intitial_graph = generate_graph(mister_x.location, initial_locations)
 
     # Draw the graph and write it to a file "initial_graph.png"
-    draw_graph(intiial_graph, 'initial_graph')
+    draw_graph(intitial_graph, 'initial_graph')
 
     # Return class objects for use in the game
     return (mister_x, detectives)
