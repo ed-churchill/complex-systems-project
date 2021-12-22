@@ -49,8 +49,35 @@ def play_random_game(mister_x, detectives):
         print("Game over. Detectives win")
         return 1
     else:
-        # Move to a random node out of the possible nodes
+        # Otherwise, move to a random node out of the possible nodes
         mister_x.location = random.choice(misterx_moves)
+
+    # Calculate the detectives' possible moves.
+    for i, detective in enumerate(detectives):
+        # Ensure no clashes with other detectives
+        detective_moves = detective.possible_moves(tube_edges, bus_edges, taxi_edges)
+        detective_moves.remove(detectives[i - 1].location)
+        detective_moves.remove(detectives[i - 2].location)
+        detective_moves.remove(detectives[i - 3].location)
+
+        # If list of possible moves is empty, then MisterX wins
+        if not detective_moves:
+            print("Game over. Mister X wins.")
+            return 0
+        else:
+            # Otherwise, move to a random node out of the possible nodes
+            detective.location = random.choice(detective_moves)
+
+    # Check if any of the detectives have the same location as Mister X
+    detective_locations = [detective.location for detective in detectives]
+    if mister_x.location in detective_locations:
+        print("Game over. Detectives win")
+        return 1
+    else:
+        print("Game over. Mister X wins")#
+        return 0
+
+    # TODO: Put into for loop, split into sub functions and add graph drawing at each iteration.
 
 if __name__ == "__main__":
     mister_x, detectives = initialise_game()
