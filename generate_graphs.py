@@ -96,8 +96,3 @@ def draw_graph(graph, graph_name):
 
     # Write graph to .png file, using the already created .gv file
     os.system(f'dot -Tpng {graph_name}.gv -o {graph_name}.png')
-
-# Main method
-if __name__ == "__main__":
-    graph = generate_graph(1, [2, 3, 4])
-    draw_graph(graph, 'graph')
