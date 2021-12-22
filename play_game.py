@@ -56,9 +56,12 @@ def play_random_game(mister_x, detectives):
     for i, detective in enumerate(detectives):
         # Ensure no clashes with other detectives
         detective_moves = detective.possible_moves(tube_edges, bus_edges, taxi_edges)
-        detective_moves.remove(detectives[i - 1].location)
-        detective_moves.remove(detectives[i - 2].location)
-        detective_moves.remove(detectives[i - 3].location)
+        if detectives[i - 1].location in detective_moves:
+            detective_moves.remove(detectives[i - 1].location)
+        if detectives[i - 2].location in detective_moves:
+            detective_moves.remove(detectives[i - 2].location)
+        if detectives[i - 3].location in detective_moves:
+            detective_moves.remove(detectives[i - 3].location)
 
         # If list of possible moves is empty, then MisterX wins
         if not detective_moves:
