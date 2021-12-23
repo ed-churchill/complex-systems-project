@@ -34,8 +34,8 @@ def play_random_game(mister_x, detectives):
 
     for k in range(1, 25):
         # Draw graph of current situation
-        current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-        draw_graph(current_graph, f'graph_{k}')
+        # current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+        # draw_graph(current_graph, f'graph_{k}')
 
         # Calculate Mister X's possible moves
         misterx_moves = mister_x.possible_moves(tube_edges, bus_edges, taxi_edges)
@@ -45,8 +45,8 @@ def play_random_game(mister_x, detectives):
         
         # If list of possible moves is empty, then detectives win
         if not misterx_moves:
-            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-            draw_graph(end_graph, 'end_graph')
+            # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            # draw_graph(end_graph, 'end_graph')
             print("Game over. Detectives win")
             return 1
         else:
@@ -67,8 +67,8 @@ def play_random_game(mister_x, detectives):
             # If list of possible moves is empty, then MisterX wins
             if not detective_moves:
                 end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-                draw_graph(end_graph, 'end_graph')
-                print("Game over. Mister X wins.")
+                # draw_graph(end_graph, 'end_graph')
+                # print("Game over. Mister X wins.")
                 return 0
             else:
                 # Otherwise, move to a random node out of the possible nodes
@@ -77,17 +77,29 @@ def play_random_game(mister_x, detectives):
         # Check if any of the detectives have the same location as Mister X
         detective_locations = [detective.location for detective in detectives]
         if mister_x.location in detective_locations:
-            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-            draw_graph(end_graph, 'end_graph')
+            # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            # draw_graph(end_graph, 'end_graph')
             print("Game over. Detectives win")
             return 1
 
     # MisterX wins if the for loop completes without returning a value
-    end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-    draw_graph(end_graph, 'end_graph')
+    # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+    # draw_graph(end_graph, 'end_graph')
     print("Game over. Mister X wins.")
     return 0
 
 if __name__ == "__main__":
-    mister_x, detectives = initialise_game()
-    play_random_game(mister_x, detectives)
+    # Run Game 100 times and count wins
+    detective_wins = 0
+    misterx_wins = 0
+    for j in range(1, 100001):
+        mister_x, detectives = initialise_game()
+        result = play_random_game(mister_x, detectives)
+
+        if result == 1:
+            detective_wins +=1
+        else:
+            misterx_wins +=1
+
+    print(f"Detectives won {detective_wins} times")
+    print(f"Mister X won {misterx_wins} times")
