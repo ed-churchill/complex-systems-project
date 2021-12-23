@@ -38,49 +38,54 @@ def play_random_game(mister_x, detectives):
 
     tube_edges, bus_edges, taxi_edges = get_edges()
 
-    # Calculate Mister X's possible moves
-    misterx_moves = mister_x.possible_moves(tube_edges, bus_edges, taxi_edges)
-    for detective in detectives:
-        if detective.location in misterx_moves:
-            misterx_moves.remove(detective.location)
-    
-    # If list of possible moves is empty, then detectives win
-    if not misterx_moves:
-        print("Game over. Detectives win")
-        return 1
-    else:
-        # Otherwise, move to a random node out of the possible nodes
-        mister_x.location = random.choice(misterx_moves)
+    for k in range(1, 25):
+        # Draw graph of current situation
+        current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+        draw_graph(current_graph, f'graph_{k}')
 
-    # Calculate the detectives' possible moves.
-    for i, detective in enumerate(detectives):
-        # Ensure no clashes with other detectives
-        detective_moves = detective.possible_moves(tube_edges, bus_edges, taxi_edges)
-        if detectives[i - 1].location in detective_moves:
-            detective_moves.remove(detectives[i - 1].location)
-        if detectives[i - 2].location in detective_moves:
-            detective_moves.remove(detectives[i - 2].location)
-        if detectives[i - 3].location in detective_moves:
-            detective_moves.remove(detectives[i - 3].location)
-
-        # If list of possible moves is empty, then MisterX wins
-        if not detective_moves:
-            print("Game over. Mister X wins.")
-            return 0
+        # Calculate Mister X's possible moves
+        misterx_moves = mister_x.possible_moves(tube_edges, bus_edges, taxi_edges)
+        for detective in detectives:
+            if detective.location in misterx_moves:
+                misterx_moves.remove(detective.location)
+        
+        # If list of possible moves is empty, then detectives win
+        if not misterx_moves:
+            print("Game over. Detectives win")
+            return 1
         else:
             # Otherwise, move to a random node out of the possible nodes
-            detective.location = random.choice(detective_moves)
+            mister_x.location = random.choice(misterx_moves)
 
-    # Check if any of the detectives have the same location as Mister X
-    detective_locations = [detective.location for detective in detectives]
-    if mister_x.location in detective_locations:
-        print("Game over. Detectives win")
-        return 1
-    else:
-        print("Game over. Mister X wins")#
-        return 0
+        # Calculate the detectives' possible moves.
+        for i, detective in enumerate(detectives):
+            # Ensure no clashes with other detectives
+            detective_moves = detective.possible_moves(tube_edges, bus_edges, taxi_edges)
+            if detectives[i - 1].location in detective_moves:
+                detective_moves.remove(detectives[i - 1].location)
+            if detectives[i - 2].location in detective_moves:
+                detective_moves.remove(detectives[i - 2].location)
+            if detectives[i - 3].location in detective_moves:
+                detective_moves.remove(detectives[i - 3].location)
 
-    # TODO: Put into for loop, split into sub functions and add graph drawing at each iteration.
+            # If list of possible moves is empty, then MisterX wins
+            if not detective_moves:
+                print("Game over. Mister X wins.")
+                return 0
+            else:
+                # Otherwise, move to a random node out of the possible nodes
+                detective.location = random.choice(detective_moves)
+
+        # Check if any of the detectives have the same location as Mister X
+        detective_locations = [detective.location for detective in detectives]
+        if mister_x.location in detective_locations:
+            print(f"Mister X landed on {mister_x.location}" )
+            print("Detectives win here. Game over. Detectives win")
+            return 1
+
+    # MisterX wins if the for loop completes without returning a value
+    print("Game over. Mister X wins.")
+    return 0
 
 if __name__ == "__main__":
     mister_x, detectives = initialise_game()
