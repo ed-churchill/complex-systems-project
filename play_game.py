@@ -51,6 +51,8 @@ def play_random_game(mister_x, detectives):
         
         # If list of possible moves is empty, then detectives win
         if not misterx_moves:
+            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            draw_graph(end_graph, 'end_graph')
             print("Game over. Detectives win")
             return 1
         else:
@@ -70,6 +72,8 @@ def play_random_game(mister_x, detectives):
 
             # If list of possible moves is empty, then MisterX wins
             if not detective_moves:
+                end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+                draw_graph(end_graph, 'end_graph')
                 print("Game over. Mister X wins.")
                 return 0
             else:
@@ -79,11 +83,14 @@ def play_random_game(mister_x, detectives):
         # Check if any of the detectives have the same location as Mister X
         detective_locations = [detective.location for detective in detectives]
         if mister_x.location in detective_locations:
-            print(f"Mister X landed on {mister_x.location}" )
-            print("Detectives win here. Game over. Detectives win")
+            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            draw_graph(end_graph, 'end_graph')
+            print("Game over. Detectives win")
             return 1
 
     # MisterX wins if the for loop completes without returning a value
+    end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+    draw_graph(end_graph, 'end_graph')
     print("Game over. Mister X wins.")
     return 0
 

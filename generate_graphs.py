@@ -48,21 +48,39 @@ def add_edges(graph):
 def add_nodes(graph, misterx_location, detective_locations):
     """Adds the 199 nodes to the given graph, highlighting the locations of MisterX and the Detectives"""
 
-    # Add Mister X node
+    # Initialise Mister X node
     node_misterx = pdp.graphviz.Node(name=str(misterx_location), style='filled')
     node_misterx.set('pendwidth', 3)
     node_misterx.set('fontsize', 40)
-    node_misterx.set('fillcolor', 'red')
-    graph.add_node(node_misterx)
 
-    # Add Detective nodes
-    for val in detective_locations:
-        node_detective = pdp.graphviz.Node(name=str(val), style='filled')
-        node_detective.set('pendwidth', 3)
-        node_detective.set('fontsize', 40)
-        node_detective.set('fillcolor', 'green')
-        graph.add_node(node_detective)
+    # Case where Mister X is in same location as detective
+    if misterx_location in detective_locations:
+        # Add Mister X Node
+        node_misterx.set('fillcolor', 'orange')
+        graph.add_node(node_misterx)
 
+        # Add detective nodes
+        detective_locations.remove(misterx_location)
+        for val in detective_locations:
+            node_detective = pdp.graphviz.Node(name=str(val), style='filled')
+            node_detective.set('pendwidth', 3)
+            node_detective.set('fontsize', 40)
+            node_detective.set('fillcolor', 'green')
+            graph.add_node(node_detective)
+        detective_locations.append(misterx_location)
+    else:
+        # Add Mister X node
+        node_misterx.set('fillcolor', 'red')
+        graph.add_node(node_misterx)
+
+        # Add detective nodes
+        for val in detective_locations:
+            node_detective = pdp.graphviz.Node(name=str(val), style='filled')
+            node_detective.set('pendwidth', 3)
+            node_detective.set('fontsize', 40)
+            node_detective.set('fillcolor', 'green')
+            graph.add_node(node_detective)
+    
     # Add remaining graph nodes
     other_nodes = [i for i in range(1, 200) if i != misterx_location and i not in detective_locations]
     for i in other_nodes:
