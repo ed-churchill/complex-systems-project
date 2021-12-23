@@ -1,9 +1,9 @@
 graph london_graph {
-82 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
-104 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-164 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-167 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-102 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+52 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
+30 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+82 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+199 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+82 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 1 [fontsize=40, penwidth=3];
 2 [fontsize=40, penwidth=3];
 3 [fontsize=40, penwidth=3];
@@ -33,7 +33,6 @@ graph london_graph {
 27 [fontsize=40, penwidth=3];
 28 [fontsize=40, penwidth=3];
 29 [fontsize=40, penwidth=3];
-30 [fontsize=40, penwidth=3];
 31 [fontsize=40, penwidth=3];
 32 [fontsize=40, penwidth=3];
 33 [fontsize=40, penwidth=3];
@@ -55,7 +54,6 @@ graph london_graph {
 49 [fontsize=40, penwidth=3];
 50 [fontsize=40, penwidth=3];
 51 [fontsize=40, penwidth=3];
-52 [fontsize=40, penwidth=3];
 53 [fontsize=40, penwidth=3];
 54 [fontsize=40, penwidth=3];
 55 [fontsize=40, penwidth=3];
@@ -104,7 +102,9 @@ graph london_graph {
 99 [fontsize=40, penwidth=3];
 100 [fontsize=40, penwidth=3];
 101 [fontsize=40, penwidth=3];
+102 [fontsize=40, penwidth=3];
 103 [fontsize=40, penwidth=3];
+104 [fontsize=40, penwidth=3];
 105 [fontsize=40, penwidth=3];
 106 [fontsize=40, penwidth=3];
 107 [fontsize=40, penwidth=3];
@@ -164,8 +164,10 @@ graph london_graph {
 161 [fontsize=40, penwidth=3];
 162 [fontsize=40, penwidth=3];
 163 [fontsize=40, penwidth=3];
+164 [fontsize=40, penwidth=3];
 165 [fontsize=40, penwidth=3];
 166 [fontsize=40, penwidth=3];
+167 [fontsize=40, penwidth=3];
 168 [fontsize=40, penwidth=3];
 169 [fontsize=40, penwidth=3];
 170 [fontsize=40, penwidth=3];
@@ -197,7 +199,6 @@ graph london_graph {
 196 [fontsize=40, penwidth=3];
 197 [fontsize=40, penwidth=3];
 198 [fontsize=40, penwidth=3];
-199 [fontsize=40, penwidth=3];
 1 -- 46  [color=red, penwidth=4];
 13 -- 46  [color=red, penwidth=4];
 13 -- 49  [color=red, penwidth=4];

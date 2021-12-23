@@ -1,9 +1,9 @@
 graph london_graph {
-84 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
-142 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-147 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-194 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-140 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+49 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
+42 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+10 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+188 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+82 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 1 [fontsize=40, penwidth=3];
 2 [fontsize=40, penwidth=3];
 3 [fontsize=40, penwidth=3];
@@ -13,7 +13,6 @@ graph london_graph {
 7 [fontsize=40, penwidth=3];
 8 [fontsize=40, penwidth=3];
 9 [fontsize=40, penwidth=3];
-10 [fontsize=40, penwidth=3];
 11 [fontsize=40, penwidth=3];
 12 [fontsize=40, penwidth=3];
 13 [fontsize=40, penwidth=3];
@@ -45,14 +44,12 @@ graph london_graph {
 39 [fontsize=40, penwidth=3];
 40 [fontsize=40, penwidth=3];
 41 [fontsize=40, penwidth=3];
-42 [fontsize=40, penwidth=3];
 43 [fontsize=40, penwidth=3];
 44 [fontsize=40, penwidth=3];
 45 [fontsize=40, penwidth=3];
 46 [fontsize=40, penwidth=3];
 47 [fontsize=40, penwidth=3];
 48 [fontsize=40, penwidth=3];
-49 [fontsize=40, penwidth=3];
 50 [fontsize=40, penwidth=3];
 51 [fontsize=40, penwidth=3];
 52 [fontsize=40, penwidth=3];
@@ -85,8 +82,8 @@ graph london_graph {
 79 [fontsize=40, penwidth=3];
 80 [fontsize=40, penwidth=3];
 81 [fontsize=40, penwidth=3];
-82 [fontsize=40, penwidth=3];
 83 [fontsize=40, penwidth=3];
+84 [fontsize=40, penwidth=3];
 85 [fontsize=40, penwidth=3];
 86 [fontsize=40, penwidth=3];
 87 [fontsize=40, penwidth=3];
@@ -142,11 +139,14 @@ graph london_graph {
 137 [fontsize=40, penwidth=3];
 138 [fontsize=40, penwidth=3];
 139 [fontsize=40, penwidth=3];
+140 [fontsize=40, penwidth=3];
 141 [fontsize=40, penwidth=3];
+142 [fontsize=40, penwidth=3];
 143 [fontsize=40, penwidth=3];
 144 [fontsize=40, penwidth=3];
 145 [fontsize=40, penwidth=3];
 146 [fontsize=40, penwidth=3];
+147 [fontsize=40, penwidth=3];
 148 [fontsize=40, penwidth=3];
 149 [fontsize=40, penwidth=3];
 150 [fontsize=40, penwidth=3];
@@ -187,12 +187,12 @@ graph london_graph {
 185 [fontsize=40, penwidth=3];
 186 [fontsize=40, penwidth=3];
 187 [fontsize=40, penwidth=3];
-188 [fontsize=40, penwidth=3];
 189 [fontsize=40, penwidth=3];
 190 [fontsize=40, penwidth=3];
 191 [fontsize=40, penwidth=3];
 192 [fontsize=40, penwidth=3];
 193 [fontsize=40, penwidth=3];
+194 [fontsize=40, penwidth=3];
 195 [fontsize=40, penwidth=3];
 196 [fontsize=40, penwidth=3];
 197 [fontsize=40, penwidth=3];

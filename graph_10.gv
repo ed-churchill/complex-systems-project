@@ -1,9 +1,9 @@
 graph london_graph {
-71 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
+33 [fillcolor=red, fontsize=40, pendwidth=3, style=filled];
+71 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+11 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 143 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-137 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-180 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
-170 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
+13 [fillcolor=green, fontsize=40, pendwidth=3, style=filled];
 1 [fontsize=40, penwidth=3];
 2 [fontsize=40, penwidth=3];
 3 [fontsize=40, penwidth=3];
@@ -14,9 +14,7 @@ graph london_graph {
 8 [fontsize=40, penwidth=3];
 9 [fontsize=40, penwidth=3];
 10 [fontsize=40, penwidth=3];
-11 [fontsize=40, penwidth=3];
 12 [fontsize=40, penwidth=3];
-13 [fontsize=40, penwidth=3];
 14 [fontsize=40, penwidth=3];
 15 [fontsize=40, penwidth=3];
 16 [fontsize=40, penwidth=3];
@@ -36,7 +34,6 @@ graph london_graph {
 30 [fontsize=40, penwidth=3];
 31 [fontsize=40, penwidth=3];
 32 [fontsize=40, penwidth=3];
-33 [fontsize=40, penwidth=3];
 34 [fontsize=40, penwidth=3];
 35 [fontsize=40, penwidth=3];
 36 [fontsize=40, penwidth=3];
@@ -139,6 +136,7 @@ graph london_graph {
 134 [fontsize=40, penwidth=3];
 135 [fontsize=40, penwidth=3];
 136 [fontsize=40, penwidth=3];
+137 [fontsize=40, penwidth=3];
 138 [fontsize=40, penwidth=3];
 139 [fontsize=40, penwidth=3];
 140 [fontsize=40, penwidth=3];
@@ -170,6 +168,7 @@ graph london_graph {
 167 [fontsize=40, penwidth=3];
 168 [fontsize=40, penwidth=3];
 169 [fontsize=40, penwidth=3];
+170 [fontsize=40, penwidth=3];
 171 [fontsize=40, penwidth=3];
 172 [fontsize=40, penwidth=3];
 173 [fontsize=40, penwidth=3];
@@ -179,6 +178,7 @@ graph london_graph {
 177 [fontsize=40, penwidth=3];
 178 [fontsize=40, penwidth=3];
 179 [fontsize=40, penwidth=3];
+180 [fontsize=40, penwidth=3];
 181 [fontsize=40, penwidth=3];
 182 [fontsize=40, penwidth=3];
 183 [fontsize=40, penwidth=3];
