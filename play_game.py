@@ -20,12 +20,6 @@ def initialise_game():
             possible_locations.remove(detectives[i].location)
     initial_locations = [detective.location for detective in detectives]
 
-    # Generate graph, including initial locations of players
-    intitial_graph = generate_graph(mister_x.location, initial_locations)
-
-    # Draw the graph and write it to a file "initial_graph.png"
-    draw_graph(intitial_graph, 'initial_graph')
-
     # Return class objects for use in the game
     return (mister_x, detectives)
 
@@ -33,7 +27,7 @@ def initialise_game():
 def play_random_game(mister_x, detectives):
     """Function that carries out one game of Scotland Yard using the random walk
     strategy specified in the write up. It takes class objects as paramaters (which
-    have been obtained from the 'initialise_game()' function. The function returns 1
+    have been obtained from the 'initialise_game()' function. The function returns 1 
     if the detectives win and returns 0 if MisterX wins"""
 
     tube_edges, bus_edges, taxi_edges = get_edges()

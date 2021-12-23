@@ -106,7 +106,8 @@ def generate_graph(misterx_location, detective_locations):
 
 def draw_graph(graph, graph_name):
     """Function that writes the given pydotplus.graphviz.Graph object to a .gv file and .png
-    file. The name of both the files will be decided by the argument 'graph_name' of type string"""
+    file. The name of both the files will be decided by the argument 'graph_name' of type string.
+    """
 
     # Write graph to .gv file
     with open(f"{graph_name}.gv", 'w') as f:
