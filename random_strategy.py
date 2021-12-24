@@ -2,7 +2,7 @@ from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
 
-def initialise_random_game():
+def initialise_game():
     """Function that sets up the initial graph with MisterX and the Detectives in
     randomly chosen unique locations. It returns the class objects as a tuple of the form
     (MisterX(), detectives)"""
@@ -107,5 +107,5 @@ def detectives_random_move(detectives, tube_edges, bus_edges, taxi_edges):
     return detectives    
 
 if __name__ == "__main__":
-    mister_x, detectives = initialise_random_game()
+    mister_x, detectives = initialise_game()
     result = play_random_game(mister_x, detectives)
