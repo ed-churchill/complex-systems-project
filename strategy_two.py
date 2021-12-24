@@ -25,16 +25,23 @@ def detective_turn(detectives, k, possiblex_locations, tube_edges, bus_edges, ta
             # Calculate distance from current detective location to possible Mister X locations
             current_distance = graphical_distance(detective.location, possiblex_locations)
 
-            # Find the node which minimises the distance to possible Mister X locations
+            # Find the node which minimises the distance to possible Mister X locations. If
+            # the current node gives the minimum distance itself, then move randomly
             current_move = detective.location
+            found_smaller = False
             for node in detective_moves:
                 distance = graphical_distance(node, possiblex_locations)
                 if distance < current_distance:
+                    found_smaller = True
                     current_move = node
                     current_distance = distance
 
-            # Move the detective to the node     
-            detective.location = node
+            # Move the detective to the node minimising distance, and move randomly 
+            # if no smaller path was found.
+            if found_smaller:
+                detective.location = current_move
+            else:
+                detective.location = random.choice(detective_moves)
 
         return detectives
 
