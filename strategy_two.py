@@ -2,7 +2,7 @@ from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
 from random_strategy import initialise_game, detectives_random_move
-import queue
+from graphical_distance_calculator import graphical_distance
 
 def detective_turn(detectives, k, possiblex_locations, tube_edges, bus_edges, taxi_edges):
     """Function that carries out the detectives' move as outlined in Section 4 of the
@@ -45,12 +45,3 @@ def detective_turn(detectives, k, possiblex_locations, tube_edges, bus_edges, ta
                 detective.location = random.choice(detective_moves)
 
         return detectives
-
-
-
-def graphical_distance(node_one, node_two, tube_edges, bus_edges, taxi_edges):
-    """Function that calculates the graphical distance on our graph between 
-    a given node and a set of nodes"""
-    
-    pass
-
