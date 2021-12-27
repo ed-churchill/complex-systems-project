@@ -1,29 +1,41 @@
-from typing import ByteString
+from networkx.algorithms import graphical
+from networkx.algorithms.shortest_paths.unweighted import bidirectional_shortest_path
 from generate_graphs import get_edges
+import networkx as nx
 
-def get_adjacency_lists(tube_edges, bus_edges, taxi_edges):
-    """Function that creates a list of length 199. Each element of the list is a 
-    list of adjacent nodes to node (index + 1)"""
+def graphical_distance(src, dest, tube_edges, bus_edges, taxi_edges):
+    """Function that returns the minimum number of edges required to travel
+    between vertex 'src' and vertex 'dest'"""
 
-    # Get edges and remove duplicates
+    # Get all edges of graph
     edges = tube_edges + bus_edges + taxi_edges
 
-    # For every node, make a list of nodes adjacent to it (remember zero indexing)
-    adjacent_nodes = []
-    for i in range(0, 199):
-        adjacent_nodes.append([])
+    # Create graph as networkx object
+    G = nx.Graph()
+    G.add_nodes_from(range(1, 200))
     for edge in edges:
-        source_index = edge[0] - 1
-        dest_index = edge[1] - 1
-        if edge[1] not in adjacent_nodes[source_index]:
-            adjacent_nodes[source_index].append(edge[1])
-        if edge[0] not in adjacent_nodes[dest_index]:
-            adjacent_nodes[dest_index].append(edge[0])
-    
-    return adjacent_nodes
+        edge = tuple(edge)
+        G.add_edge(*edge)
 
+    # Compute length of shortest path
+    shortest_path = bidirectional_shortest_path(G, src, dest)
+    if src == dest:
+        distance = 0
+    else:
+        distance = len(shortest_path) - 1
+
+    return distance
+
+def graphical_set_distance(src, dests, tube_edges, taxi_edges, bus_edges):
+    """Function that calculates the minimum number of edges required to
+    travel between node 'src' and every node in the list of nodes 'dests'.
+    It returns the minimum distance of these distances."""
+
+    # Calculate the distance to each node and return the minimum
+    distances = [graphical_distance(src, dest, tube_edges, bus_edges, taxi_edges) for dest in dests]
+    return min(distances)       
 
 if __name__ == "__main__":
     tube_edges, bus_edges, taxi_edges = get_edges()
-    adjacency_list = get_adjacency_lists(tube_edges, bus_edges, taxi_edges)
-    print(adjacency_list)
+    distance = graphical_set_distance(3, [65, 82], tube_edges, bus_edges, taxi_edges)
+    print(distance)  

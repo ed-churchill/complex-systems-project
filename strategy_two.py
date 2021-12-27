@@ -2,7 +2,7 @@ from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
 from random_strategy import initialise_game, detectives_random_move
-from graphical_distance_calculator import graphical_distance
+from graphical_distance_calculator import graphical_set_distance
 
 def detective_turn(detectives, k, possiblex_locations, tube_edges, bus_edges, taxi_edges):
     """Function that carries out the detectives' move as outlined in Section 4 of the
@@ -24,14 +24,14 @@ def detective_turn(detectives, k, possiblex_locations, tube_edges, bus_edges, ta
                 detective_moves.remove(detectives[i - 3].location)
 
             # Calculate distance from current detective location to possible Mister X locations
-            current_distance = graphical_distance(detective.location, possiblex_locations)
+            current_distance = graphical_set_distance(detective.location, possiblex_locations)
 
             # Find the node which minimises the distance to possible Mister X locations. If
             # the current node gives the minimum distance itself, then move randomly
             current_move = detective.location
             found_smaller = False
             for node in detective_moves:
-                distance = graphical_distance(node, possiblex_locations)
+                distance = graphical_set_distance(node, possiblex_locations)
                 if distance < current_distance:
                     found_smaller = True
                     current_move = node
