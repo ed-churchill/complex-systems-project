@@ -118,7 +118,7 @@ def play_strategy_two(mister_x, detectives):
         # Detective calculate possible Mister X locations
         poss_locations = poss_x_locations(detectives, mister_x, k, poss_locations, transport_mode)
 
-        # Carry out detectives' move (BUG IS HERE)
+        # Carry out detectives' move
         detectives = detective_turn(detectives, k, poss_locations, tube_edges, bus_edges, taxi_edges)
 
         # Check if any of the detectives have the same location as Mister X
