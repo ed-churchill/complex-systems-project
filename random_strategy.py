@@ -100,9 +100,11 @@ def detectives_random_move(detectives, tube_edges, bus_edges, taxi_edges):
             detective_moves.remove(detectives[i - 2].location)
         if detectives[i - 3].location in detective_moves:
             detective_moves.remove(detectives[i - 3].location)
-
-        # Move to a random node out of the possible nodes
-        detective.location = random.choice(detective_moves)
+        
+        # Move to random node unless there are no possible moves, in which case don't move
+        if detective_moves:
+            detective.location = random.choice(detective_moves)
+    
     return detectives    
 
 if __name__ == "__main__":
