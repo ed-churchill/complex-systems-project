@@ -45,3 +45,43 @@ def detective_turn(detectives, k, possiblex_locations, tube_edges, bus_edges, ta
                 detective.location = random.choice(detective_moves)
 
         return detectives
+
+def poss_x_locations(detectives, mister_x, k, last_poss_locations, tranport_mode):
+    """Function that updates the possible locations of Mister X as a list of nodes, as outlined
+    in section 4 of the write up."""
+
+    # On turns 3, 8, 13, 18, the detectives get full knowledge of Mister X's location.
+    if k in [3, 8, 13, 18]:
+        return mister_x.location
+    else:
+        # Get edges in the subgraph of the last transport mode
+        if tranport_mode == 'tube':
+            sub_edges = get_edges()[0]
+        elif tranport_mode == 'bus':
+            sub_edges = get_edges()[1]
+        elif tranport_mode == 'taxi':
+            sub_edges = get_edges()[2]
+
+        # Calculate possible vertices mister x could have moved to, given his last
+        # transport mode
+        temp = []
+        for vertex in last_poss_locations:
+            for v in range(1, 200):
+                if ([vertex, v] in sub_edges) or ([v, vertex] in sub_edges):
+                    if v not in temp:
+                        temp.append(v)
+
+        # Remove the detective locations from the possible Mister X locations
+        detective_locations = [detective.location for detective in detectives]
+        for location in detective_locations:
+            if location in temp:
+                temp.remove(location)
+
+        # Return possible locations of Mister X
+        return temp
+
+def play_strategy_two(mister_x, detectives):
+    """Function that carries out one game of Scotland Yard using the minimisation
+    strategy specified in section 4 of the write up. It takes class objects as paramaters 
+    (which have been obtained from the 'initialise_game()' function. The function returns 1 
+    if the detectives win and returns 0 if MisterX wins"""
