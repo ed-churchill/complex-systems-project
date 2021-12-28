@@ -103,7 +103,6 @@ def detectives_random_move(detectives, tube_edges, bus_edges, taxi_edges):
 
         # Move to a random node out of the possible nodes
         detective.location = random.choice(detective_moves)
-
     return detectives    
 
 if __name__ == "__main__":
