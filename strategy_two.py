@@ -1,4 +1,3 @@
-from networkx.algorithms import mis
 from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
@@ -27,8 +26,7 @@ def detective_turn(detectives, k, poss_locations, tube_edges, bus_edges, taxi_ed
             # Calculate distance from current detective location to possible Mister X locations
             current_distance = graphical_set_distance(detective.location, poss_locations, tube_edges, bus_edges, taxi_edges)
 
-            # Find the node which minimises the distance to possible Mister X locations. If
-            # the current node gives the minimum distance itself, then move randomly
+            # Find the node which minimises the distance to possible Mister X location
             current_move = detective.location
             found_smaller = False
             for node in detective_moves:
