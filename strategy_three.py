@@ -1,9 +1,11 @@
+from numpy.core.fromnumeric import argmin
 from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
 from random_strategy import initialise_game, detectives_random_move, misterx_random_turn
-from graphical_distance_calculator import graphical_set_distance
+from graphical_distance_calculator import graphical_distance, graphical_set_distance
 from strategy_two import detective_turn, poss_x_locations
+import numpy as np
 
 def misterx_run(mister_x, detectives, tube_edges, bus_edges, taxi_edges):
     """Function that carries out Mister X's turn using the running strategy. The 
@@ -44,8 +46,21 @@ def misterx_run(mister_x, detectives, tube_edges, bus_edges, taxi_edges):
         if found_bigger:
             mister_x.location = current_move
         else:
-            mister_x.location = random.choice(misterx_moves)
-    
+            # mister_x.location = random.choice(misterx_moves)
+            # Find ArgMin
+            sums = []
+            for move in misterx_moves:
+                sum = 0
+                for d in detectives:
+                    sum += 1 / pow(4, graphical_distance(move, d.location, tube_edges, bus_edges, taxi_edges))
+                    #sum += graphical_distance(move, d.location, tube_edges, bus_edges, taxi_edges)
+                sums.append(sum)
+            sums = np.array(sums)            
+            arg_min = np.argmin(sums, axis=0)
+
+            # Make move to node corresponding to argmin
+            mister_x.location = misterx_moves[arg_min]
+
     return mister_x
 
 def play_strategy_three(mister_x, detectives):
@@ -76,18 +91,24 @@ def play_strategy_three(mister_x, detectives):
         location_after = mister_x.location
 
         # Work out what mode of transport Mister X used
-        if [location_before, location_after] in tube_edges or [location_after, location_before] in tube_edges:
-            transport_mode = 'tube'
+        if [location_before, location_after] in taxi_edges or [location_after, location_before] in taxi_edges:
+            transport_mode = 'taxi'
         elif [location_before, location_after] in bus_edges or [location_after, location_before] in bus_edges:
             transport_mode = 'bus'
         else:
-            transport_mode = 'taxi'
+            transport_mode = 'tube'
 
         # Detective calculate possible Mister X locations
         poss_locations = poss_x_locations(detectives, mister_x, k, poss_locations, transport_mode)
-
+        
         # Carry out detectives' move
-        detectives = detective_turn(detectives, k, poss_locations, tube_edges, bus_edges, taxi_edges)
+        temp = detective_turn(detectives, mister_x, k, poss_locations, tube_edges, bus_edges, taxi_edges)
+        if temp == 0:
+            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            draw_graph(end_graph, 'end_graph')
+            print("Game over. Mister X wins")
+            return 0 
+        detectives = temp
 
         # Check if any of the detectives have the same location as Mister X
         detective_locations = [detective.location for detective in detectives]
@@ -112,7 +133,7 @@ def play_strategy_three(mister_x, detectives):
 if __name__ == "__main__":
     misterx_wins = 0
     detective_wins = 0
-    for j in range(1, 101):
+    for j in range(1,101):
         mister_x, detectives = initialise_game()
         result = play_strategy_three(mister_x, detectives)
         if result == 1:

@@ -4,10 +4,12 @@ import random
 from random_strategy import initialise_game, detectives_random_move, misterx_random_turn
 from graphical_distance_calculator import graphical_set_distance
 
-def detective_turn(detectives, k, poss_locations, tube_edges, bus_edges, taxi_edges):
+def detective_turn(detectives, mister_x, k, poss_locations, tube_edges, bus_edges, taxi_edges):
     """Function that carries out the detectives' move as outlined in Section 4 of the
     write up. The parameter k is the turn number and the parameter possiblex_locations
-    is a list of possible locations where Mister X could be."""
+    is a list of possible locations where Mister X could be. The function returns 0 if the
+    detectives have no possible moves, otherwise it returns the list 'detectives', updated
+    with new locations"""
 
     # Move randomly until turn 3
     if k < 3:
@@ -20,8 +22,10 @@ def detective_turn(detectives, k, poss_locations, tube_edges, bus_edges, taxi_ed
                 detective_moves.remove(detectives[i - 1].location)
             if detectives[i - 2].location in detective_moves:
                 detective_moves.remove(detectives[i - 2].location)
-            if detectives[i - 3].location in detective_moves:
-                detective_moves.remove(detectives[i - 3].location)
+
+            if not detective_moves:
+                return 0
+
 
             # Calculate distance from current detective location to possible Mister X locations
             current_distance = graphical_set_distance(detective.location, poss_locations, tube_edges, bus_edges, taxi_edges)
@@ -93,8 +97,8 @@ def play_strategy_two(mister_x, detectives):
 
     for k in range(1, 25):
         # Draw graph of current situation
-        current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-        draw_graph(current_graph, f'graph_{k}')
+        # current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+        # draw_graph(current_graph, f'graph_{k}')
 
         # Carry out mister X's random move and check if game has terminated. If it hasn't, 
         # update Mister X to latest version
@@ -106,24 +110,30 @@ def play_strategy_two(mister_x, detectives):
         location_after = mister_x.location
 
         # Work out what mode of transport Mister X used
-        if [location_before, location_after] in tube_edges or [location_after, location_before] in tube_edges:
-            transport_mode = 'tube'
+        if [location_before, location_after] in taxi_edges or [location_after, location_before] in taxi_edges:
+            transport_mode = 'taxi'
         elif [location_before, location_after] in bus_edges or [location_after, location_before] in bus_edges:
             transport_mode = 'bus'
         else:
-            transport_mode = 'taxi'
+            transport_mode = 'tube'
 
         # Detective calculate possible Mister X locations
         poss_locations = poss_x_locations(detectives, mister_x, k, poss_locations, transport_mode)
 
         # Carry out detectives' move
-        detectives = detective_turn(detectives, k, poss_locations, tube_edges, bus_edges, taxi_edges)
+        temp = detective_turn(detectives, mister_x, k, poss_locations, tube_edges, bus_edges, taxi_edges)
+        if temp == 0:
+            # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            # draw_graph(end_graph, 'end_graph')
+            print("Game over. Mister X wins")
+            return 0 
+        detectives = temp
 
         # Check if any of the detectives have the same location as Mister X
         detective_locations = [detective.location for detective in detectives]
         if mister_x.location in detective_locations:
-            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-            draw_graph(end_graph, 'end_graph')
+            # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            # draw_graph(end_graph, 'end_graph')
             print("Game over. Detectives win")
             return 1
         else:
@@ -135,11 +145,20 @@ def play_strategy_two(mister_x, detectives):
             
 
     # MisterX wins if the for loop completes without returning a value
-    end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-    draw_graph(end_graph, 'end_graph')
+    # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+    # draw_graph(end_graph, 'end_graph')
     print("Game over. Mister X wins.")
     return 0
 
 if __name__ == "__main__":
-    mister_x, detectives = initialise_game()
-    result = play_strategy_two(mister_x, detectives)
+    misterx_wins = 0
+    detective_wins = 0
+    for j in range(1,51):
+        mister_x, detectives = initialise_game()
+        result = play_strategy_two(mister_x, detectives)
+        if result == 1:
+            detective_wins += 1
+        else:
+            misterx_wins += 1
+    print(f"Detective wins: {detective_wins}")
+    print(f"Mister X wins: {misterx_wins}")

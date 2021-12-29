@@ -53,7 +53,7 @@ class MisterX:
         # Return list
         return tube_journeys + bus_journeys + taxi_journeys
 
-
+    
 class Detective:
     """A class to model a detective"""
 

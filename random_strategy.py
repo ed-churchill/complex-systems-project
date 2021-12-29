@@ -9,13 +9,13 @@ def initialise_game():
 
     # Create Mister X and Detectives
     mister_x = MisterX()
-    detectives = [Detective(), Detective(), Detective(), Detective()]
+    detectives = [Detective(), Detective(), Detective()]
 
     # Ensure Detectives have unique starting locations
     possible_locations = [13, 26, 29, 34, 50, 53, 91, 94, 103, 112, 117, 138, 141, 155, 174]
     initial_locations = [detective.location for detective in detectives]
     if len(initial_locations) > len(set(initial_locations)):
-        for i in range(0, 4):
+        for i in range(0, 3):
             detectives[i].location = random.choice(possible_locations)
             possible_locations.remove(detectives[i].location)
     initial_locations = [detective.location for detective in detectives]
@@ -98,8 +98,6 @@ def detectives_random_move(detectives, tube_edges, bus_edges, taxi_edges):
             detective_moves.remove(detectives[i - 1].location)
         if detectives[i - 2].location in detective_moves:
             detective_moves.remove(detectives[i - 2].location)
-        if detectives[i - 3].location in detective_moves:
-            detective_moves.remove(detectives[i - 3].location)
         
         # Move to random node unless there are no possible moves, in which case don't move
         if detective_moves:
