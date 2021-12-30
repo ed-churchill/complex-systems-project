@@ -52,7 +52,7 @@ def misterx_run(mister_x, detectives, tube_edges, bus_edges, taxi_edges):
             for move in misterx_moves:
                 sum = 0
                 for d in detectives:
-                    sum += 1 / pow(4, graphical_distance(move, d.location, tube_edges, bus_edges, taxi_edges))
+                    sum += 1 / pow(3, graphical_distance(move, d.location, tube_edges, bus_edges, taxi_edges))
                 sums.append(sum)
             sums = np.array(sums)            
             arg_min = np.argmin(sums, axis=0)
