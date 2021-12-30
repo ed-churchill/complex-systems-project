@@ -1,4 +1,3 @@
-from networkx.algorithms import graphical
 from networkx.algorithms.shortest_paths.unweighted import bidirectional_shortest_path
 from generate_graphs import get_edges
 import networkx as nx
@@ -33,9 +32,4 @@ def graphical_set_distance(src, dests, tube_edges, taxi_edges, bus_edges):
 
     # Calculate the distance to each node and return the minimum
     distances = [graphical_distance(src, dest, tube_edges, bus_edges, taxi_edges) for dest in dests]
-    return min(distances)       
-
-if __name__ == "__main__":
-    tube_edges, bus_edges, taxi_edges = get_edges()
-    distance = graphical_set_distance(3, [65, 82], tube_edges, bus_edges, taxi_edges)
-    print(distance)  
+    return min(distances)
