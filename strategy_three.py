@@ -143,13 +143,13 @@ if __name__ == "__main__":
     each player without generating graphs (assuming they are commented out of the above code)"""
 
     # Option 1
-    mister_x, detectives = initialise_game()
-    run_versus_rush(mister_x, detectives)
+    # mister_x, detectives = initialise_game()
+    # run_versus_rush(mister_x, detectives)
     
     # Option 2
     misterx_wins = 0
     detective_wins = 0
-    for j in range(1,1001):
+    for j in range(1,101):
         mister_x, detectives = initialise_game()
         result = run_versus_rush(mister_x, detectives)
         if result == 1:
