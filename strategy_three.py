@@ -1,17 +1,20 @@
-from numpy.core.fromnumeric import argmin
+"""File containing functions to carry out the strategy outlined in Section 5 of the write-up."""
+
 from generate_graphs import get_edges, generate_graph, draw_graph
-from players import MisterX, Detective
-import random
-from random_strategy import initialise_game, detectives_random_move, misterx_random_turn
+from strategy_one import initialise_game
 from graphical_distance_calculator import graphical_distance, graphical_set_distance
-from strategy_two import detective_turn, poss_x_locations
+from strategy_two import detective_rush, poss_x_locations
 import numpy as np
 
 def misterx_run(mister_x, detectives, tube_edges, bus_edges, taxi_edges):
     """Function that carries out Mister X's turn using the running strategy. The 
     function returns 1 if Mister X has no possible moves and the detectives win, otherwise
     it return the current instance of Mister X, to be used as a parameter in the
-    detectives' turn function."""
+    detectives' turn function.
+    
+    Please note the lines generating graphs can be commented/uncommented as you desire.
+    When running the game many times, comment out the lines generating graphs to improve
+    performance"""
 
     # Calculate Mister X's possible moves
     misterx_moves = mister_x.possible_moves(tube_edges, bus_edges, taxi_edges)
@@ -62,12 +65,16 @@ def misterx_run(mister_x, detectives, tube_edges, bus_edges, taxi_edges):
 
     return mister_x
 
-def play_strategy_three(mister_x, detectives):
+def run_versus_rush(mister_x, detectives):
     """Function that carries out one game of Scotland Yard using the minimisation
     strategy specified in section 4 for the detectives, and the running strategy for
     Mister X specified in section 5. It takes class objects as paramaters 
     (which have been obtained from the 'initialise_game()' function. The function returns 1 
-    if the detectives win and returns 0 if MisterX wins"""
+    if the detectives win and returns 0 if MisterX wins.
+    
+    Please note the lines generating graphs can be commented/uncommented as you desire.
+    When running the game many times, comment out the lines generating graphs to improve
+    performance"""
 
     # Get graph edges
     tube_edges, bus_edges, taxi_edges = get_edges()
@@ -101,10 +108,10 @@ def play_strategy_three(mister_x, detectives):
         poss_locations = poss_x_locations(detectives, mister_x, k, poss_locations, transport_mode)
         
         # Carry out detectives' move
-        temp = detective_turn(detectives, mister_x, k, poss_locations, tube_edges, bus_edges, taxi_edges)
+        temp = detective_rush(detectives, mister_x, k, poss_locations, tube_edges, bus_edges, taxi_edges)
         if temp == 0:
-            end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-            draw_graph(end_graph, 'end_graph')
+            # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+            # draw_graph(end_graph, 'end_graph')
             print("Game over. Mister X wins")
             return 0 
         detectives = temp
@@ -130,11 +137,21 @@ def play_strategy_three(mister_x, detectives):
     return 0
 
 if __name__ == "__main__":
+    """Please comment out one of the options in this method in order to run the other one.
+    Option 1 runs the game once and generates graphs (assuming they are not commented out
+    of the above code). Option 2 runs the game 1000 times and counts the numbers of wins for
+    each player without generating graphs (assuming they are commented out of the above code)"""
+
+    # Option 1
+    mister_x, detectives = initialise_game()
+    run_versus_rush(mister_x, detectives)
+    
+    # Option 2
     misterx_wins = 0
     detective_wins = 0
-    for j in range(1,101):
+    for j in range(1,1001):
         mister_x, detectives = initialise_game()
-        result = play_strategy_three(mister_x, detectives)
+        result = run_versus_rush(mister_x, detectives)
         if result == 1:
             detective_wins += 1
         else:

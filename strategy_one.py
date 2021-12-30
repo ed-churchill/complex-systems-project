@@ -1,6 +1,5 @@
 """File containing functions to carry out the strategy outlined in Section 3 of the write-up."""
 
-from networkx.algorithms.assortativity.correlation import degree_pearson_correlation_coefficient
 from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
@@ -73,7 +72,7 @@ def detectives_random_move(detectives, tube_edges, bus_edges, taxi_edges):
     
     return detectives
 
-def random_random(mister_x, detectives):
+def random_versus_random(mister_x, detectives):
     """Function that carries out one game of Scotland Yard using the random walk
     strategy specified in the write up. It takes class objects as paramaters (which
     have been obtained from the 'initialise_game()' function. The function returns 1 
@@ -123,14 +122,14 @@ if __name__ == "__main__":
 
     # Option 1
     mister_x, detectives = initialise_game()
-    random_random(mister_x, detectives)
+    random_versus_random(mister_x, detectives)
     
     # Option 2
     misterx_wins = 0
     detective_wins = 0
     for j in range(1,1001):
         mister_x, detectives = initialise_game()
-        result = random_random(mister_x, detectives)
+        result = random_versus_random(mister_x, detectives)
         if result == 1:
             detective_wins += 1
         else:
