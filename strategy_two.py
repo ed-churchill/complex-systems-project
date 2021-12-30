@@ -1,7 +1,7 @@
 from generate_graphs import get_edges, generate_graph, draw_graph
 from players import MisterX, Detective
 import random
-from random_strategy import initialise_game, detectives_random_move, misterx_random_turn
+from random_strategy import initialise_game, detectives_random_move, misterx_random_move
 from graphical_distance_calculator import graphical_set_distance
 
 def detective_turn(detectives, mister_x, k, poss_locations, tube_edges, bus_edges, taxi_edges):
@@ -103,7 +103,7 @@ def play_strategy_two(mister_x, detectives):
         # Carry out mister X's random move and check if game has terminated. If it hasn't, 
         # update Mister X to latest version
         location_before = mister_x.location
-        mister_x = misterx_random_turn(mister_x, detectives, tube_edges, bus_edges, taxi_edges)
+        mister_x = misterx_random_move(mister_x, detectives, tube_edges, bus_edges, taxi_edges)
         if mister_x == 1:
             print('Game over. Detectives win.')
             return 1
