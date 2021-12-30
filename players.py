@@ -60,7 +60,7 @@ class Detective:
     def __init__(self):
         """Constructor, assigning a detective an initial location"""
         
-        # Choose a random starting location for MisterX from the possible starting locations
+        # Choose a random starting location for the detective from the possible starting locations
         initial_locations = [13, 26, 29, 34, 50, 53, 91, 94, 103, 112, 117, 138, 141, 155, 174]
         initial_location = random.choice(initial_locations)
 
@@ -104,5 +104,5 @@ class Detective:
                 possible_node = edge[index - 1]
                 taxi_journeys.append(possible_node)
 
-        # Return dictionary
+        # Return list
         return tube_journeys + bus_journeys + taxi_journeys
