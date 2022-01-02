@@ -87,8 +87,8 @@ def random_versus_random(mister_x, detectives):
 
     for k in range(1, 25):
         # Draw graph of current situation
-        # current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-        # draw_graph(current_graph, f'graph_{k}')
+        current_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+        draw_graph(current_graph, f'graph_{k}')
 
         # Carry out mister X's move and check if game has terminated. If it hasn't, update Mister X to
         # latest version
@@ -109,8 +109,8 @@ def random_versus_random(mister_x, detectives):
             return 1
 
     # MisterX wins if the for loop completes without returning a value
-    # end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
-    # draw_graph(end_graph, 'end_graph')
+    end_graph = generate_graph(mister_x.location, [detective.location for detective in detectives])
+    draw_graph(end_graph, 'end_graph')
     print("Game over. Mister X wins.")
     return 0
 
@@ -121,18 +121,18 @@ if __name__ == "__main__":
     each player without generating graphs (assuming they are commented out of the above code)"""
 
     # Option 1
-    # mister_x, detectives = initialise_game()
-    # random_versus_random(mister_x, detectives)
+    mister_x, detectives = initialise_game()
+    random_versus_random(mister_x, detectives)
     
     # Option 2
-    misterx_wins = 0
-    detective_wins = 0
-    for j in range(1,101):
-        mister_x, detectives = initialise_game()
-        result = random_versus_random(mister_x, detectives)
-        if result == 1:
-            detective_wins += 1
-        else:
-            misterx_wins += 1
-    print(f"Detective wins: {detective_wins}")
-    print(f"Mister X wins: {misterx_wins}")
+    # misterx_wins = 0
+    # detective_wins = 0
+    # for j in range(1,101):
+    #     mister_x, detectives = initialise_game()
+    #     result = random_versus_random(mister_x, detectives)
+    #     if result == 1:
+    #         detective_wins += 1
+    #     else:
+    #         misterx_wins += 1
+    # print(f"Detective wins: {detective_wins}")
+    # print(f"Mister X wins: {misterx_wins}")
